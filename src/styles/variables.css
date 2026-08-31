@@ -1,0 +1,104 @@
+:root {
+  /* =========================
+     Brand / Colors
+     ========================= */
+
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-light: #e0e7ff;
+
+  --color-secondary: #64748b;
+  --color-secondary-hover: #475569;
+  --color-secondary-light: #f1f5f9;
+
+  --color-tertiary: #b95f00;
+  --color-tertiary-hover: #964d00;
+  --color-tertiary-light: #ffedd5;
+
+  --color-neutral: #777680;
+
+  --color-danger: #d32f2f;
+  --color-danger-hover: #b71c1c;
+  --color-danger-light: #ffebee;
+
+  /* =========================
+     Background
+     ========================= */
+
+  --bg-app: linear-gradient(135deg,
+      #e0e7ff 0%,
+      #d5cef5 45%,
+      #e2e8f0 100%);
+
+  --bg-surface: #ffffff;
+  --bg-surface-card: #ffffff;
+  --bg-input: #f8fafc;
+
+  --border: #e2e8f0;
+
+  /* =========================
+     Text
+     ========================= */
+
+  --text-primary: #1c1b1f;
+  --text-secondary: #49454f;
+  --text-muted: #777680;
+  --text-inverted: #ffffff;
+
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+[data-theme="dark"] {
+  /* =========================
+     Brand / Colors
+     ========================= */
+
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-primary-light: rgba(99, 102, 241, 0.16);
+
+  --color-secondary: #94a3b8;
+  --color-secondary-hover: #cbd5e1;
+  --color-secondary-light: rgba(100, 116, 139, 0.16);
+
+  --color-tertiary: #f59e0b;
+  --color-tertiary-hover: #fbbf24;
+  --color-tertiary-light: rgba(245, 158, 11, 0.16);
+
+  --color-neutral: #9ca3af;
+
+  --color-danger: #ef5350;
+  --color-danger-hover: #f87171;
+  --color-danger-light: rgba(239, 83, 80, 0.16);
+
+  /* =========================
+     Background
+     ========================= */
+
+  --bg-app: linear-gradient(135deg,
+      #111827 0%,
+      #27204a 45%,
+      #1e293b 100%);
+
+
+  --bg-surface: linear-gradient(135deg,
+      #111827 0%,
+      #27204a 45%,
+      #1e293b 100%);
+  ;
+  --bg-surface-card: #282933;
+  --bg-input: #2a2c38;
+
+   --border: #494c52;
+  /* =========================
+     Text
+     ========================= */
+
+  --text-primary: #f2f0f7;
+  --text-secondary: #cac4d0;
+  --text-muted: #938f99;
+  --text-inverted: #121318;
+
+
+}
