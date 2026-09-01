@@ -1,0 +1,52 @@
+.button_container {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
+.new_task_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    height: 40px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--text-inverted);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.new_task_button:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.new_task_button:active {
+    transform: scale(0.97);
+}
+
+.new_task_button:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 3px;
+}
+
+.plus_icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.button_text {
+    line-height: 1;
+}

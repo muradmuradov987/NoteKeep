@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../Navbar/Navbar.module.css";
+import profile from "../../assets/images/profile.jpg";
 
 const Navbar = ({ onMenuClick }) => {
   const [darkMode, setDarkMode] = useState(
@@ -49,7 +50,7 @@ const Navbar = ({ onMenuClick }) => {
           <img
             alt="User profile photo"
             className={styles.user_avatar_img}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFlsktI1CFc8wl4g86fC_lbR02EnrJsUpMb51O2uwSxrqhEkSXoWFtAr_w&s=10"
+            src={profile}
           />
         </div>
       </div>
