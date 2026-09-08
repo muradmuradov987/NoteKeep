@@ -14,11 +14,13 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^9.4.0",
     "@mui/x-charts": "^9.12.0",
+    "@reduxjs/toolkit": "^2.12.0",
     "lucide": "^1.39.0",
     "lucide-react": "^1.39.0",
     "material-symbols": "^0.47.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-redux": "^9.3.0",
     "react-router": "^8.3.0"
   },
   "devDependencies": {

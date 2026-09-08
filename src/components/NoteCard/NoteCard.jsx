@@ -1,44 +1,62 @@
+import styles from "../NoteCard/NoteCard.module.css";
 
-const NoteCard = () => {
+const NoteCard = ({ note }) => {
+  const {
+    title,
+    content,
+    color,
+    background,
+    pinned,
+    archived,
+    createdAt,
+    updatedAt,
+  } = note;
+
   return (
-    <div>NoteCard</div>
-  )
-}
+    <article
+      className={`${styles.note_card} ${
+        pinned ? styles.is_pinned : ""
+      } ${archived ? styles.is_archived : ""}`}
+      style={{
+        backgroundColor: color,
+        backgroundImage: background ? `url("${background}")` : "none",
+      }}
+    >
+      <div className={styles.note_card_top}>
+        <span className={styles.note_card_created}>Created {createdAt}</span>
 
-export default NoteCard
+        {pinned && (
+          <span className={styles.note_card_pin} title="Pinned">
+            📌
+          </span>
+        )}
+      </div>
 
+      <div className={styles.note_card_body}>
+        <h3 className={styles.note_card_title}>{title}</h3>
 
+        <p className={styles.note_card_content}>{content}</p>
+      </div>
 
-  // id: string;
-  // title: string;
-  // content: string;
+      <div className={styles.note_card_bottom}>
+        <span className={styles.note_card_date}>UpdatedAt {updatedAt}</span>
+        <button className={styles.note_card_menu} type="button">
+          ⋮
+        </button>
+      </div>
+    </article>
+  );
+};
 
-  // color?: string;
-  // pinned?: boolean;
-  // archived?: boolean;
-
-  // createdAt: string;
-  // updatedAt: string;
-
+export default NoteCard;
 
 //   Search
-// Filter 
+// Filter
 // Sort: newest / oldest
 // Grid/List view
-
 
 // 3 noqte
 // Edit
 // Pin
 // Archive
 // Delete
-
-// {
-//   id: "123",
-//   title: "Meeting",
-//   content: "Call John tomorrow",
-//   color: "#fef3c7",
-//   background: null,
-//   created_at: "...",
-//   updated_at: "..."
-// }

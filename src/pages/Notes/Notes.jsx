@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNote } from "../../redux/features/notes/notesSlice";
 import NoteCard from "../../components/NoteCard/NoteCard";
 import NoteModal from "../../components/NoteModal/NoteModal";
 import AddNoteBtn from "../../components/UI/Buttons/AddNoteBtn/AddNoteBtn";
 
 const Notes = () => {
   const [noteModal, setNoteModal] = useState(false);
+  const dispatch = useDispatch();
 
+  const notes = useSelector((state) => state.notes.notes);
   const handleSaveNote = (note) => {
     console.log(note);
     setNoteModal(false);
+    dispatch(addNote(note));
   };
 
   return (
@@ -20,13 +25,22 @@ const Notes = () => {
         on_close={() => setNoteModal(false)}
         on_save={handleSaveNote}
       />
-      <div className="row">
-        <div className="col-lg-3">
-          <NoteCard />
-        </div>
+
+      <div className="row notes-grid">
+        {notes.map((note) => (
+          <div className="col-lg-3" key={note.id}>
+            <NoteCard note={note} />
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default Notes;
+
+// <div className="notes-grid">
+//   {notes.map((note) => (
+//     <NoteCard key={note.id} note={note} />
+//   ))}
+// </div>

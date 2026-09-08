@@ -1,28 +1,21 @@
 import { useState } from "react";
-// import { X, Palette, Check, Image as ImageIcon } from "lucide-react";
-
 import styles from "../NoteModal/NoteModal.module.css";
-
 const COLORS = [
-  "#fef3c7",
-  "#dcfce7",
-  "#dbeafe",
-  "#fce7f3",
-  "#ede9fe",
-  "#ffedd5",
-  "#f3f4f6",
+  "#bb392d",
+  "#cc75a5",
+  "#aba241",
+  "#87b157",
+  "#68b0a0",
+  "#8bbbc6",
+  "#9565bf",
 ];
 
 const BACKGROUNDS = [
   {
     id: "paper",
     type: "image",
-    value: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400",
-  },
-  {
-    id: "leaves",
-    type: "image",
-    value: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=400",
+    value:
+      "https://images.unsplash.com/photo-1780729996045-46c09e5edda3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: "mountains",
@@ -30,9 +23,17 @@ const BACKGROUNDS = [
     value: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=400",
   },
   {
+    id: "leaves",
+    type: "image",
+    value:
+      "https://images.unsplash.com/photo-1788238023590-37defb1b9afe?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+
+  {
     id: "ocean",
     type: "image",
-    value: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400",
+    value:
+      "https://images.unsplash.com/photo-1775506519644-1ffd90241183?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -40,7 +41,7 @@ export default function NoteModal({ is_open, on_close, on_save }) {
   const [title, set_title] = useState("");
   const [content, set_content] = useState("");
 
-  const [selected_color, set_selected_color] = useState("var(--bg-surface-card)");
+  const [selected_color, set_selected_color] = useState("#9ca3af");
   const [selected_background, set_selected_background] = useState(null);
 
   const [is_palette_open, set_is_palette_open] = useState(false);
@@ -52,16 +53,19 @@ export default function NoteModal({ is_open, on_close, on_save }) {
 
   const handle_save = () => {
     on_save?.({
-      title,
-      content,
+      id: crypto.randomUUID(),
+      title: title,
+      content: content,
       color: selected_color,
       background: selected_background,
+      pinned: false,
+      archived: false,
+      createdAt: "Mon,Jun 24, 2026",
+      updatedAt: "Thu,Jun 27, 2026",
     });
   };
 
   const handle_color_select = (color) => {
-    console.log("color selected");
-
     set_selected_color(color);
     set_selected_background(null);
   };
@@ -69,7 +73,6 @@ export default function NoteModal({ is_open, on_close, on_save }) {
   const handle_background_select = (background) => {
     set_selected_background(background.value);
     set_selected_color("transparent");
-    console.log("bg selected");
   };
 
   return (

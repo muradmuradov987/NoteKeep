@@ -38,7 +38,7 @@
 .modal_title {
     font-size: 16px;
     font-weight: 600;
-    color: var(--text-primary);
+       color: #ffffff;
 }
 
 .close_button {
@@ -66,9 +66,8 @@
     width: 100%;
     border: none;
     outline: none;
-    color: var(--text-primary);
+    color: #ffffff;
     background: transparent;
-
     font-family: inherit;
 }
 
