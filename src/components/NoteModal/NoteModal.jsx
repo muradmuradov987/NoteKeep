@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../NoteModal/NoteModal.module.css";
 const COLORS = [
   "#bb392d",
@@ -37,7 +37,7 @@ const BACKGROUNDS = [
   },
 ];
 
-export default function NoteModal({ is_open, on_close, on_save }) {
+export default function NoteModal({ is_open, on_close, on_save, note }) {
   const [title, set_title] = useState("");
   const [content, set_content] = useState("");
 
@@ -47,21 +47,40 @@ export default function NoteModal({ is_open, on_close, on_save }) {
   const [is_palette_open, set_is_palette_open] = useState(false);
   const [active_tab, set_active_tab] = useState("colors");
 
+  useEffect(() => {
+    if (is_open) {
+      if (note) {
+        set_title(note.title || "");
+        set_content(note.content || "");
+        set_selected_color(note.color || "#9ca3af");
+        set_selected_background(note.background || null);
+      } else {
+        set_title("");
+        set_content("");
+        set_selected_color("#9ca3af");
+        set_selected_background(null);
+      }
+      set_is_palette_open(false);
+      set_active_tab("colors");
+    }
+  }, [is_open, note]);
+
   if (!is_open) {
     return null;
   }
 
   const handle_save = () => {
+    const now = new Date().toISOString();
     on_save?.({
-      id: crypto.randomUUID(),
+      id: note ? note.id : crypto.randomUUID(),
       title: title,
       content: content,
       color: selected_color,
       background: selected_background,
-      pinned: false,
-      archived: false,
-      createdAt: "Mon,Jun 24, 2026",
-      updatedAt: "Thu,Jun 27, 2026",
+      pinned: note ? note.pinned : false,
+      archived: note ? note.archived : false,
+      createdAt: note ? note.createdAt : now,
+      updatedAt: now,
     });
   };
 
@@ -236,7 +255,7 @@ export default function NoteModal({ is_open, on_close, on_save }) {
               className={styles.save_button}
               onClick={handle_save}
             >
-              Save note
+              {note ? "Update note" : "Save note"}
             </button>
           </div>
         </div>

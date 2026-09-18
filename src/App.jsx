@@ -6,6 +6,7 @@ import DashboardLayout from "./layouts/DashboardLayout/DashboardLayout";
 import Reminders from "./pages/Reminders/Reminders.jsx";
 import Calendar from "./pages/Calendar/Calendar.jsx";
 import Tasks from "./pages/Tasks/Tasks.jsx";
+import Archive from "./pages/Archive/Archive.jsx";
 function App() {
   return (
     <Routes>
@@ -14,9 +15,10 @@ function App() {
       <Route element={<DashboardLayout/>}>
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/notes" element={<Notes/>} />
+        <Route path="/tasks" element={<Tasks/>} />
+        <Route path="/archive" element={<Archive/>} />
         <Route path="/reminders" element={<Reminders/>} />
         <Route path="/calendar" element={<Calendar/>} />
-        <Route path="/tasks" element={<Tasks/>} />
       </Route>
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>

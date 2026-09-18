@@ -6,10 +6,13 @@ import RecentTasksCard from "../../components/Dashboard/RecentTasksCard/RecentTa
 
 const Dashboard = () => {
   const notes = useSelector((state) => state.notes.notes);
+
+  const active_notes_count = notes.filter((n) => !n.archived).length;
+  const archived_notes_count = notes.filter((n) => n.archived).length;
   const InfoCards = [
     {
       cardName: "Total Notes",
-      cardQuantity: notes.length,
+      cardQuantity: active_notes_count,
       cardIcon: "description",
       cardIconColor: "#6063EE",
       cardStatus: "12% from last week",
@@ -18,7 +21,7 @@ const Dashboard = () => {
       cardBorder: "#4f46e5",
     },
     {
-      cardName: "Total Taks",
+      cardName: "Total Task",
       cardQuantity: "12",
       cardIcon: "task",
       cardIconColor: "#B55D00",
@@ -47,6 +50,16 @@ const Dashboard = () => {
       cardStatusColor: "var(--text-primary)",
       cardBorder: "#e9d81a",
     },
+    {
+      cardName: "Archived",
+      cardQuantity: archived_notes_count,
+      cardIcon: "done_all",
+      cardIconColor: "#af14bd",
+      cardStatus: "Active projects",
+      cardStatusIcon: "",
+      cardStatusColor: "var(--text-primary)",
+      cardBorder: "#d42bcc",
+    },
   ];
   return (
     <div className="page_body">
@@ -58,6 +71,7 @@ const Dashboard = () => {
             <InfoCard data={data} />
           </div>
         ))}
+        
       </div>
       {/* Recent cards */}
       <div className="row">

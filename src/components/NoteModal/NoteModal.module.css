@@ -263,6 +263,8 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
+    color: var(--text-primary);
+
     transition:
         background 0.15s ease,
         transform 0.1s ease;
@@ -271,12 +273,11 @@
 .cancel_button {
     border: 1px solid var(--border);
     color: var(--text-primary);
-    background: var(--color-danger-light);
+    background: var(--color-danger);
 }
 
 .cancel_button:hover {
     background: var(--color-danger-hover);
-    color: var(--text-inverted);
 
 }
 
@@ -288,7 +289,6 @@
 
 .save_button:hover {
     background: #14b837;
-    color: var(--text-inverted);
 
 }
 

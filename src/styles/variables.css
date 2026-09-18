@@ -44,6 +44,7 @@
   --text-secondary: #49454f;
   --text-muted: #777680;
   --text-inverted: #ffffff;
+  --text-primary-hover: #dfdde4;
 
   --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -99,6 +100,5 @@
   --text-secondary: #cac4d0;
   --text-muted: #938f99;
   --text-inverted: #121318;
-
-
+  --text-primary-hover: #393542;
 }
