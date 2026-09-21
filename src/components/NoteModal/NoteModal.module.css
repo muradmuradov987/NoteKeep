@@ -263,16 +263,14 @@
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    color: var(--text-primary);
-
+    color: #fff;
+    border: none;
     transition:
         background 0.15s ease,
         transform 0.1s ease;
 }
 
 .cancel_button {
-    border: 1px solid var(--border);
-    color: var(--text-primary);
     background: var(--color-danger);
 }
 
@@ -282,8 +280,6 @@
 }
 
 .save_button {
-    border: 1px solid var(--border);
-    color: var(--text-primary);
     background: #42a858;
 }
 

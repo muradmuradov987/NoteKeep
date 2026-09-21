@@ -26,6 +26,19 @@ const initialState = {
       createdAt: "Mon,Jun 24, 2026",
       updatedAt: "Thu,Jun 27, 2026",
     },
+        {
+      id: crypto.randomUUID(),
+      title: "Where can I get some?",
+      content:
+        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+      color: "#bb392d",
+      background: null,
+      pinned: false,
+      archived: false,
+      createdAt: "Mon,Jun 22, 2026",
+      updatedAt: "Thu,Jun 25, 2026",
+    },
+
   ],
 };
 
@@ -46,25 +59,49 @@ const notesSlice = createSlice({
       }
     },
     togglePin: (state, action) => {
-      const note = state.notes.find((note) => note.id === action.payload);
-      if (note) {
-        note.pinned = !note.pinned;
-      }
+      const note = state.notes.find((n) => n.id === action.payload);
+      if (!note) return;
+
+      note.pinned = !note.pinned;
+
+      const target_group = state.notes.filter(
+        (n) => n.pinned === note.pinned && n.id !== note.id,
+      );
+      const max_order = target_group.length
+        ? Math.max(...target_group.map((n) => n.order ?? 0))
+        : -1;
+      note.order = max_order + 1;
     },
     toggleArchive: (state, action) => {
       const note = state.notes.find((note) => note.id === action.payload);
       if (note) {
         note.archived = !note.archived;
-        note.pinned = false; 
+        note.pinned = false;
       }
     },
 
     deleteNote: (state, action) => {
       state.notes = state.notes.filter((note) => note.id !== action.payload);
     },
+    reorderNotes: (state, action) => {
+      const { orderedIds } = action.payload;
+      orderedIds.forEach((id, index) => {
+        const note = state.notes.find((n) => n.id === id);
+        if (note) {
+          note.order = index;
+        }
+      });
+    },
   },
 });
 
-export const { addNote, updateNote, togglePin,toggleArchive, deleteNote } = notesSlice.actions;
+export const {
+  addNote,
+  updateNote,
+  togglePin,
+  toggleArchive,
+  deleteNote,
+  reorderNotes,
+} = notesSlice.actions;
 
 export default notesSlice.reducer;

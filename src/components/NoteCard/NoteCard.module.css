@@ -7,7 +7,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-left: 4px solid rgba(0, 0, 0, 0.493);
+    border-left: 3px solid rgba(0, 0, 0, 0.493);
     border-radius: 20px;
     margin-bottom: 20px;
     box-shadow:
@@ -20,6 +20,7 @@
         border-color 0.25s ease;
     cursor: pointer;
     position: relative;
+    will-change: transform;
 }
 
 
@@ -181,22 +182,129 @@
 }
 
 .is_archived {
-  filter: grayscale(55%) opacity(0.45);
-  position: relative;
+    filter: grayscale(55%) opacity(0.45);
+    position: relative;
     border: 2px solid rgba(0, 0, 0, 0.15);
-  opacity: 0.85;
+    opacity: 0.85;
 }
 
 .is_archived::after {
-  content: "Archived";
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.25);
-  padding: 2px 8px;
-  border-radius: 999px;
-  letter-spacing: 0.3px;
+    content: "Archived";
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+}
+
+.note_card_drag_handle {
+    position: absolute;
+    top: 12px;
+    right: 40px;
+    cursor: grab;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 6px;
+    border-radius: 6px;
+    z-index: 5;
+    touch-action: none;
+}
+
+.note_card_drag_handle:active {
+    cursor: grabbing;
+}
+
+.note_card_drag_handle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 767px) {
+    .note_card {
+        height: 200px;
+        padding: 10px;
+        border-left: 2px solid rgba(0, 0, 0, 0.493);
+        border-radius: 15px;
+    }
+
+    .note_card_top {
+        margin-bottom: 10px;
+    }
+
+    .note_card_created {
+        font-size: 8px;
+        width: 80%;
+    }
+
+    .note_card_pin {
+        top: 15px;
+        right: 0px;
+        font-size: 10px;
+        width: 20px;
+        height: 20px;
+        transform: rotate(0deg);
+    }
+
+    .note_card_title {
+        margin: 0 0 5px;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .note_card_content {
+        font-size: 12px;
+        -webkit-line-clamp: 4;
+    }
+
+    .note_card_bottom {
+        margin-top: 10px;
+        padding-top: 0px;
+    }
+
+
+    .note_card_date {
+        font-size: 8px;
+    }
+
+
+    .note_card_menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    .note_card_popover {
+        position: absolute;
+        bottom: calc(100% + 4px);
+        right: 0;
+        min-width: 150px;
+        background: var(--bg-surface);
+        border-radius: 8px;
+        padding: 4px;
+    }
+
+    .popover_item {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+
+    .popover_divider {
+        margin: 4px;
+    }
+
+
+    .note_card_drag_handle {
+        top: 8px;
+        right: 20px;
+        font-size: 14px;
+    }
 }

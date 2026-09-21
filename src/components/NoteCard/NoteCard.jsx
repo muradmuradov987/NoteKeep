@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { formatDate } from "../../utils/utils.js";
 import styles from "../NoteCard/NoteCard.module.css";
 const NoteCard = ({
@@ -9,6 +11,7 @@ const NoteCard = ({
   onDelete,
 }) => {
   const {
+    id,
     title,
     content,
     color,
@@ -18,6 +21,22 @@ const NoteCard = ({
     createdAt,
     updatedAt,
   } = note;
+
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const drag_style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+    zIndex: isDragging ? 10 : "auto",
+  };
 
   const [menu_open, set_menu_open] = useState(false);
   const menu_ref = useRef(null);
@@ -45,15 +64,27 @@ const NoteCard = ({
   };
   return (
     <article
-      className={`${styles.note_card} ${
-        pinned ? styles.is_pinned : ""
-      } ${archived ? styles.is_archived : ""}`}
+      ref={setNodeRef}
       style={{
+        ...drag_style,
         backgroundColor: color,
         backgroundImage: background ? `url("${background}")` : "none",
       }}
+      className={`${styles.note_card} ${
+        pinned ? styles.is_pinned : ""
+      } ${archived ? styles.is_archived : ""}`}
       onClick={onClick}
     >
+      <div
+        className={styles.note_card_drag_handle}
+        {...attributes}
+        {...listeners}
+        onClick={(e) => e.stopPropagation()}
+        title="Drag to reorder"
+      >
+        ⠿
+      </div>
+
       <div className={styles.note_card_top}>
         <span className={styles.note_card_created}>
           Created {formatDate(createdAt)}
@@ -136,15 +167,4 @@ const NoteCard = ({
   );
 };
 
-export default NoteCard;
-
-//   Search
-// Filter
-// Sort: newest / oldest
-// Grid/List view
-
-// 3 noqte
-// Edit
-// Pin
-// Archive
-// Delete
+export default memo(NoteCard);
