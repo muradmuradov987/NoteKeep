@@ -1,0 +1,54 @@
+.calendar_layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+.calendar_card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.agenda_wrap {
+  position: sticky;
+  top: 20px;
+}
+
+.cell_dots {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.cell_dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.calendar_card :global(.ant-picker-calendar-date-today) {
+  border-color: var(--color-primary) !important;
+}
+
+.calendar_card :global(.ant-picker-cell-selected .ant-picker-calendar-date) {
+  background: #eef0ff !important;
+}
+
+.calendar_card :global(.ant-picker-calendar-date-selected .ant-picker-calendar-date-value) {
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 900px) {
+  .calendar_layout {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda_wrap {
+    position: static;
+  }
+}

@@ -1,5 +1,5 @@
 .app_header {
-    background: var(--bg-surface);
+    background: var(--bg-app);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,6 +81,8 @@
     align-items: center;
     justify-content: center;
     transition: color 0.2s ease;
+    position: relative;
+
 }
 
 .action_btn:hover {
@@ -89,6 +91,22 @@
 
 .action_btn:focus {
     outline: none;
+}
+
+.bell_badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-danger);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user_avatar_wrapper {

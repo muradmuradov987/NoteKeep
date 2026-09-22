@@ -1,0 +1,100 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 16px;
+}
+
+.modal {
+    background: var(--bg-surface-card);
+    border-radius: 18px;
+    padding: 28px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal_icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 16px;
+}
+
+.modal_title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+
+.modal_datetime {
+    font-size: 13px;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin: 0 0 16px;
+}
+
+.modal_description {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 20px;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 10px;
+    resize: none;
+}
+
+.footer_actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.delete_button,
+.edit_button,
+.close_button {
+    flex: 1;
+    border: none;
+    padding: 10px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.delete_button {
+    background: var(--color-danger);
+}
+
+.delete_button:hover {
+    background: var(--color-danger-hover);
+}
+
+.edit_button {
+    background: #42a858;
+}
+
+.edit_button:hover {
+    background: #14b837;
+
+}
+
+.close_button {
+    background: var(--color-secondary);
+}
+
+.close_button:hover {
+    background: var(--color-secondary-hover);
+}

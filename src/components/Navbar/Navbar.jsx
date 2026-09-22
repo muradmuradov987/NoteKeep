@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import styles from "../Navbar/Navbar.module.css";
 import profile from "../../assets/images/profile.jpg";
 
 const Navbar = ({ onMenuClick }) => {
+  const navigate = useNavigate();
+
+  const reminders_count = useSelector(
+    (state) => state.reminders.reminders.length,
+  );
+
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark",
   );
@@ -31,8 +39,11 @@ const Navbar = ({ onMenuClick }) => {
       </div>
 
       <div className={styles.header_actions}>
-        <button className={styles.action_btn}>
+        <button className={styles.action_btn} onClick={() => navigate("/reminders")}>
           <span className="material-symbols-outlined">notifications</span>
+          {reminders_count > 0 && (
+            <span className={styles.bell_badge}>{reminders_count} </span>
+          )}
         </button>
 
         <button

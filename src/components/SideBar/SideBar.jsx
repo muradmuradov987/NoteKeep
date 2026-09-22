@@ -20,14 +20,14 @@ export const SideBar = ({ open, onClose }) => {
       icon: "check_circle",
     },
     {
-      name: "Reminders",
-      path: "/reminders",
-      icon: "notifications_active",
-    },
-    {
       name: "Calendar",
       path: "/calendar",
       icon: "calendar_today",
+    },
+    {
+      name: "Reminders",
+      path: "/reminders",
+      icon: "notifications_active",
     },
     {
       name: "Timeline",

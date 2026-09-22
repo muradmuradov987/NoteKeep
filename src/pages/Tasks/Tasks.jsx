@@ -36,6 +36,7 @@ const Tasks = () => {
   const [task_modal, set_task_modal] = useState(false);
   const [editing_task, set_editing_task] = useState(null);
   const [active_id, set_active_id] = useState(null);
+  const [source_container, set_source_container] = useState(null);
   const [columns_state, set_columns_state] = useState({});
 
   useEffect(() => {
@@ -65,6 +66,7 @@ const Tasks = () => {
 
   const handle_drag_start = (event) => {
     set_active_id(event.active.id);
+    set_source_container(find_container(event.active.id));
   };
 
   const handle_drag_over = (event) => {
@@ -102,8 +104,10 @@ const Tasks = () => {
 
   const handle_drag_end = (event) => {
     const { active, over } = event;
-    const started_container = find_container(active.id);
+    const started_container = source_container;
     set_active_id(null);
+    set_source_container(null);
+
     if (!over) return;
 
     const over_container = find_container(over.id) || over.id;
