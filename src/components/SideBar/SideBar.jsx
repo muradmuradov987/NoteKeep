@@ -30,19 +30,14 @@ export const SideBar = ({ open, onClose }) => {
       icon: "notifications_active",
     },
     {
-      name: "Timeline",
-      path: "/timeline",
-      icon: "timeline",
-    },
-    {
       name: "Archive",
       path: "/archive",
       icon: "archive",
     },
     {
-      name: "Trash",
-      path: "/trash",
-      icon: "delete",
+      name: "Timeline",
+      path: "/timeline",
+      icon: "timeline",
     },
     {
       name: "Settings",
@@ -59,7 +54,10 @@ export const SideBar = ({ open, onClose }) => {
             <h1 className={styles.brand_title}>NoteKeep</h1>
             <p className={styles.brand_subtitle}>Productivity Pro</p>
           </div>
-          <span className={`material-symbols-outlined ${styles.logo_icon}`} onClick={onClose}>
+          <span
+            className={`material-symbols-outlined ${styles.logo_icon}`}
+            onClick={onClose}
+          >
             close
           </span>
         </div>

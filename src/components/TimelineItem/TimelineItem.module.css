@@ -1,0 +1,130 @@
+.row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: start;
+    position: relative;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.card_col {
+    display: flex;
+}
+
+.dot_col {
+    display: flex;
+    justify-content: center;
+    padding-top: 22px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #f4f3fb;
+}
+
+.card {
+    background: var(--bg-surface-card);
+    border-radius: 14px;
+    border-left: 4px solid;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(17, 17, 40, 0.06);
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+}
+
+.row_left .card_col {
+    justify-content: flex-end;
+    grid-column: 1;
+}
+
+.row_left .dot_col {
+    grid-column: 2;
+}
+
+.row_left .spacer_col {
+    grid-column: 3;
+}
+
+.row_right .spacer_col {
+    grid-column: 1;
+}
+
+.row_right .dot_col {
+    grid-column: 2;
+}
+
+.row_right .card_col {
+    justify-content: flex-start;
+    grid-column: 3;
+}
+
+.card_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.card_icon {
+    font-size: 15px;
+}
+
+.card_label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.card_title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+
+.card_subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    line-height: 1.5;
+}
+
+.card_time {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+
+    font-weight: 500;
+}
+
+@media (max-width: 860px) {
+    .row {
+        grid-template-columns: 40px 1fr;
+    }
+
+    .row_left .dot_col,
+    .row_right .dot_col {
+        grid-column: 1;
+    }
+
+    .row_left .card_col,
+    .row_right .card_col {
+        grid-column: 2;
+        justify-content: flex-start;
+    }
+
+    .row_left .spacer_col,
+    .row_right .spacer_col {
+        display: none;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}

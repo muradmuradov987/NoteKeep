@@ -1,0 +1,61 @@
+.page_subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: -8px 0 28px;
+}
+
+.timeline_center {
+    position: relative;
+    max-width: 1040px;
+}
+
+.center_line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #ececf2;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.day_block {
+    position: relative;
+}
+
+.day_badge_row {
+    display: flex;
+    justify-content: center;
+    margin: 28px 0 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.day_badge {
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 20px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(96, 99, 238, 0.25);
+}
+
+.empty_state {
+    text-align: center;
+    padding: 80px 0;
+    color: var(--text-muted);
+}
+
+.empty_icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 860px) {
+    .center_line {
+        left: 20px;
+    }
+}

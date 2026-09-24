@@ -7,6 +7,8 @@ import Reminders from "./pages/Reminders/Reminders.jsx";
 import Calendar from "./pages/Calendar/Calendar.jsx";
 import Tasks from "./pages/Tasks/Tasks.jsx";
 import Archive from "./pages/Archive/Archive.jsx";
+import Timeline from "./pages/Timeline/Timeline.jsx";
+
 function App() {
   return (
     <Routes>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/archive" element={<Archive/>} />
         <Route path="/reminders" element={<Reminders/>} />
         <Route path="/calendar" element={<Calendar/>} />
+        <Route path="/timeline" element={<Timeline/>} />
       </Route>
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
